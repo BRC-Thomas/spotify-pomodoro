@@ -7,6 +7,7 @@ import {
 import UpdateTimeButton from "./components/UpdateTimeButton";
 import ToggleButton from "./components/ToggleButton";
 import { useAppSelector } from "./hooks";
+import getFormattedValue from "./utils/getFormattedValue";
 
 function App() {
   const chronoValues = useAppSelector((state) => state.chrono);
@@ -80,7 +81,7 @@ function App() {
 
             <p className="text-center flex justify-center mb-1">
               <span className="text-4xl p-4 rounded bg-slate-300 text-black">
-                25:00
+                {getFormattedValue(chronoValues.displayedValue.value)}
               </span>
             </p>
             <p className="mb-10 text-center">
