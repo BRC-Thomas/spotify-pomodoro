@@ -13,14 +13,14 @@ function App() {
   const chronoValues = useAppSelector((state) => state.chrono);
   return (
     <div className="bg-black text-slate-100 pt-20 min-h-screen">
-      <div className="max-w-xl mx-auto shadow-[#000] shadow-2xl rounded-2xl p-10">
+      <div className="max-w-2xl mx-auto shadow-[#000] shadow-2xl rounded-2xl p-10">
         <h1 className="text-center text-3xl mb-8">Pomodoro</h1>
         <div className="flex flex-col items-center sm:flex-row sm:items-start">
           {/* Spotify Section */}
           <section className="w-1/2">
             <div className="h-56 w-full bg-green">
               <img
-                src="../public/images/icons/Spotify_Icon_RGB_White.png"
+                src="/images/icons/Spotify_Icon_RGB_White.png"
                 alt="spotify logo"
                 className="h-full w-full object-contain p-2 flex-shrink-0"
               />
