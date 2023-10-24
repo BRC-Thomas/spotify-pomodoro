@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Action, ThunkAction } from "@reduxjs/toolkit";
 
 type SessionType = {
   value: number;
@@ -63,9 +64,33 @@ const chrono = createSlice({
         chosenState.value += action.payload.value;
       }
     },
+    tick: (state) => {
+      console.log("TICK");
+    },
+    setUpChrono: (state, action) => {
+      state.isPlaying = true;
+      state.intervalID = action.payload;
+    },
+    resetChrono: (state, action) => {
+      window.clearInterval(state.intervalID);
+      state.isPlaying = false;
+    },
   },
 });
 
-export const { updateChronoValues } = chrono.actions;
+export function startChrono(
+  action: PayloadAction<{ type: "session" | "pause"; value: number }>
+): ThunkAction<void, any, unknown, Action> {
+  return (dispatch, getState) => {
+    const intervalID = setInterval(() => {
+      dispatch(tick());
+    }, 1000);
+    dispatch(setUpChrono(intervalID));
+    dispatch(tick());
+  };
+}
+
+export const { updateChronoValues, setUpChrono, resetChrono, tick } =
+  chrono.actions;
 
 export default chrono.reducer;
