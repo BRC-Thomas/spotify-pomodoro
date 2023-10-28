@@ -6,7 +6,10 @@ export default {
       colors: {
         black: "#191414",
         lightblack: "#242424",
-        green:"#1DB954",
+        green: "#1DB954",
+      },
+      boxShadow: {
+        whiteshadow: "0 0 0 2px hsla(0,0%,100%,.2)",
       },
     },
   },
