@@ -2,33 +2,21 @@ import UpdateTimeButton from "./components/UpdateTimeButton";
 import ToggleButton from "./components/ToggleButton";
 import { useAppSelector } from "./hooks";
 import getFormattedValue from "./utils/getFormattedValue";
-import getToken from "./features/spotify";
-import { useState, useEffect } from "react";
 import SpotifySection from "./components/SpotifySection";
 
 function App() {
   const chronoValues = useAppSelector((state) => state.chrono);
-  const [token, setToken] = useState(null);
 
-  //  Authorization Token (valide 1 heure)
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedToken = await getToken();
-      setToken(fetchedToken);
-    };
-
-    fetchData();
-  }, []);
   return (
-    <div className="bg-black text-slate-100 pt-20 min-h-screen">
-      <div className="max-w-2xl mx-auto shadow-[#000] shadow-2xl rounded-2xl p-10">
+    <div className="bg-black text-slate-100 flex items-center justify-center min-h-screen">
+      <div className="max-w-2xl mx-auto min-h-screen sm:min-h-fit shadow-[#000] shadow-2xl rounded-2xl p-10">
         <h1 className="text-center text-3xl mb-8">Pomodoro</h1>
         <div className="flex flex-col items-center sm:flex-row sm:items-start">
           {/* Spotify Section */}
           <SpotifySection />
 
           {/* Pomodoro Section */}
-          <section className="w-1/2">
+          <section className="w-full sm:w-1/2">
             <div className="flex justify-center mb-8">
               {/* Session Block */}
               <div className="mr-5">

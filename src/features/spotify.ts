@@ -13,7 +13,7 @@ const getToken = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      return data.access_token
+      return {token : data.access_token, apiKey, clientID}
       
     } else {
       console.error("Échec de la requête");
